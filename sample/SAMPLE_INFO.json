@@ -1,0 +1,26 @@
+{
+  "source_files": [
+    "yellow_tripdata_2024-01.csv",
+    "yellow_tripdata_2024-02.csv",
+    "yellow_tripdata_2024-03.csv",
+    "yellow_tripdata_2024-04.csv",
+    "yellow_tripdata_2024-05.csv",
+    "yellow_tripdata_2024-06.csv"
+  ],
+  "pickup_zones": [
+    74,
+    24,
+    41,
+    70,
+    125,
+    261,
+    166
+  ],
+  "rows": 556762,
+  "rows_from_zones": 555720,
+  "dirty_per_reason": 200,
+  "expected_result_routes": 20,
+  "file": "yellow_2024H1_sample.csv.gz",
+  "bytes": 11198395,
+  "sha256": "14060bce9ee57f9746570a3a09bf3f2095f4d41a3ae8f716cb369b58a02670d6"
+}

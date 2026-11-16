@@ -53,7 +53,7 @@ def numbers(e, p):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--explore", default=os.path.join(C.OUT_DIR, "explore", "explore.json"))
+    ap.add_argument("--explore", default=os.path.join(C.APP_ROOT, "evidence", "exploration", "explore.json"))
     ap.add_argument("--partitions", type=int, nargs="+", default=[32, 8])
     ap.add_argument("--out", default=os.path.join(C.APP_ROOT, "docs", "estimates.md"))
     a = ap.parse_args()
