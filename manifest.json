@@ -1,0 +1,78 @@
+{
+  "year": 2024,
+  "months": 6,
+  "pyarrow_version": "19.0.1",
+  "csv_definition": "UTF-8, uncompressed, all original columns and rows, header per monthly file; pyarrow.csv defaults",
+  "files": [
+    {
+      "file": "yellow_tripdata_2024-01.parquet",
+      "url": "https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2024-01.parquet",
+      "rows": 2964624,
+      "parquet_bytes": 49961641,
+      "parquet_uncompressed_encoded_bytes": 78840292,
+      "parquet_sha256": "c4d59da7bbc8abaeeeb1727947ee93d9891a71acb42854bd80db1571b2030510",
+      "csv_file": "yellow_tripdata_2024-01.csv",
+      "csv_bytes": 321371778,
+      "csv_sha256": "7c78c3b15f294277afb6c143f91a5e24d58a5102a40bba85609e0a2a8373ecf0"
+    },
+    {
+      "file": "yellow_tripdata_2024-02.parquet",
+      "url": "https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2024-02.parquet",
+      "rows": 3007526,
+      "parquet_bytes": 50349284,
+      "parquet_uncompressed_encoded_bytes": 79498098,
+      "parquet_sha256": "c76c43c18c6c6664080dd920baab4928988d5786a6b65980792ca7cd796f9f20",
+      "csv_file": "yellow_tripdata_2024-02.csv",
+      "csv_bytes": 325567049,
+      "csv_sha256": "6e7d56fe95eede485c9da47ec8e46e89973c874b588552e2b45ded4702f626ca"
+    },
+    {
+      "file": "yellow_tripdata_2024-03.parquet",
+      "url": "https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2024-03.parquet",
+      "rows": 3582628,
+      "parquet_bytes": 60078280,
+      "parquet_uncompressed_encoded_bytes": 94843368,
+      "parquet_sha256": "2d4cdc8fb96726cdd3803b13b02d2e61e71d45720aff0ebc693a8bdd1f249823",
+      "csv_file": "yellow_tripdata_2024-03.csv",
+      "csv_bytes": 385784447,
+      "csv_sha256": "bb36f1c7ddb09afec3e3ba40e231ba1fa7e249dbae610127611dd88a681e571b"
+    },
+    {
+      "file": "yellow_tripdata_2024-04.parquet",
+      "url": "https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2024-04.parquet",
+      "rows": 3514289,
+      "parquet_bytes": 59133625,
+      "parquet_uncompressed_encoded_bytes": 93425684,
+      "parquet_sha256": "ce37f736c7cf9e92164c850ef2b502a8f7bb590fc1804b6edbcb80293da01b89",
+      "csv_file": "yellow_tripdata_2024-04.csv",
+      "csv_bytes": 378738488,
+      "csv_sha256": "ec51670cabb31e93f7d0614d55f7f24e12c9498ba8c7bce2c320ae0f359d457f"
+    },
+    {
+      "file": "yellow_tripdata_2024-05.parquet",
+      "url": "https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2024-05.parquet",
+      "rows": 3723833,
+      "parquet_bytes": 62553128,
+      "parquet_uncompressed_encoded_bytes": 98025123,
+      "parquet_sha256": "1974230be2b5a3ea92e47b5eb77f32dbf1de896d81ad8df4ab6faba52749ad23",
+      "csv_file": "yellow_tripdata_2024-05.csv",
+      "csv_bytes": 401680248,
+      "csv_sha256": "25ba7f116b6aa90ab3430b608769e7e2c2adafdd145369494f2f8fc3f6a0db40"
+    },
+    {
+      "file": "yellow_tripdata_2024-06.parquet",
+      "url": "https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2024-06.parquet",
+      "rows": 3539193,
+      "parquet_bytes": 59859922,
+      "parquet_uncompressed_encoded_bytes": 94253610,
+      "parquet_sha256": "677cf14c8347f745b583f012fbdba072334c6c4efa17bfd6a64369f2ba30329c",
+      "csv_file": "yellow_tripdata_2024-06.csv",
+      "csv_bytes": 381339998,
+      "csv_sha256": "ba45e396477ebfff8e58ec7ee0d77149b1a096c87dbb71e422c7f1593af9b05c"
+    }
+  ],
+  "total_rows": 20332093,
+  "total_parquet_bytes": 341935880,
+  "total_csv_bytes": 2194482008,
+  "passes_10m_and_2gib": true
+}

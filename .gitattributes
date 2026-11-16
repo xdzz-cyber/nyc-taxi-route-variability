@@ -1,0 +1,5 @@
+# Скрипти виконуються в Linux-контейнері: на Windows не перетворювати переводи рядків на CRLF.
+* text=auto eol=lf
+*.gz binary
+*.parquet binary
+*.pdf binary

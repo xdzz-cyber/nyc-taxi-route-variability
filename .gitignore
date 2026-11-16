@@ -1,0 +1,11 @@
+data/
+out/*
+!out/.gitkeep
+spark-events/*
+!spark-events/.gitkeep
+evidence/spark-events/*.inprogress
+__pycache__/
+*.pyc
+.env
+.idea/
+.vscode/

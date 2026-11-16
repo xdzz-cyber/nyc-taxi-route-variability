@@ -1,0 +1,39 @@
+# Усе запускається в контейнерах; на хості потрібен лише Docker.
+#   docker compose build                                  # один раз, з інтернетом
+#   docker compose run --rm tools scripts/prepare_data.py # завантаження й конвертація даних
+#   docker compose run --rm pipeline                      # конвеєр на вибірці
+#   docker compose run --rm pipeline --input full --save-daily --label full
+#   docker compose up -d history                          # History Server: http://localhost:18080
+#   docker compose run --rm tools scripts/explore.py      # допоміжні скрипти
+x-spark: &spark
+  build: ./docker
+  image: nyc-taxi-spark:3.5.3-1
+  user: root
+  working_dir: /app
+  volumes:
+    - ./:/app
+    - ${DATA_DIR:-./data}:/data:ro
+  environment:
+    DRIVER_MEMORY: ${DRIVER_MEMORY:-4g}
+
+services:
+  pipeline:
+    <<: *spark
+    entrypoint: ["python3", "/app/run.py"]
+    ports:
+      - "4040:4040"   # Spark UI під час запуску (docker compose run --service-ports ...)
+
+  tools:
+    <<: *spark
+    entrypoint: ["python3"]
+    volumes:            # tools пише дані (prepare_data.py), тому /data без :ro
+      - ./:/app
+      - ${DATA_DIR:-./data}:/data
+
+  history:
+    <<: *spark
+    entrypoint: ["/opt/spark/bin/spark-class", "org.apache.spark.deploy.history.HistoryServer"]
+    environment:
+      SPARK_HISTORY_OPTS: "-Dspark.history.fs.logDirectory=file:///app/spark-events"
+    ports:
+      - "18080:18080"
