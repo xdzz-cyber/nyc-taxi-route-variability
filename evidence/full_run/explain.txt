@@ -1,0 +1,87 @@
+== Physical Plan ==
+* Project (14)
++- * Filter (13)
+   +- * HashAggregate (12)
+      +- Exchange (11)
+         +- * HashAggregate (10)
+            +- * Project (9)
+               +- * Filter (8)
+                  +- * HashAggregate (7)
+                     +- Exchange (6)
+                        +- * HashAggregate (5)
+                           +- * Project (4)
+                              +- * Project (3)
+                                 +- * Filter (2)
+                                    +- Scan csv  (1)
+
+
+(1) Scan csv 
+Output [5]: [tpep_pickup_datetime#1, tpep_dropoff_datetime#2, PULocationID#7, DOLocationID#8, total_amount#16]
+Batched: false
+Location: InMemoryFileIndex [file:/data/csv/yellow_tripdata_2024-01.csv, ... 5 entries]
+ReadSchema: struct<tpep_pickup_datetime:string,tpep_dropoff_datetime:string,PULocationID:string,DOLocationID:string,total_amount:string>
+
+(2) Filter [codegen id : 1]
+Input [5]: [tpep_pickup_datetime#1, tpep_dropoff_datetime#2, PULocationID#7, DOLocationID#8, total_amount#16]
+Condition : CASE WHEN (((isnull(cast(tpep_pickup_datetime#1 as timestamp)) OR isnull(cast(tpep_dropoff_datetime#2 as timestamp))) OR isnull(cast(PULocationID#7 as int))) OR isnull(cast(DOLocationID#8 as int))) THEN false WHEN ((cast(tpep_pickup_datetime#1 as timestamp) < 2024-01-01 00:00:00) OR (cast(tpep_pickup_datetime#1 as timestamp) >= 2024-07-01 00:00:00)) THEN false WHEN (((cast(PULocationID#7 as int) < 1) OR (cast(PULocationID#7 as int) > 263)) OR ((cast(DOLocationID#8 as int) < 1) OR (cast(DOLocationID#8 as int) > 263))) THEN false WHEN (cast(total_amount#16 as double) < 0.0) THEN false WHEN (((cast(tpep_pickup_datetime#1 as timestamp) >= 2024-03-10 02:00:00) AND (cast(tpep_pickup_datetime#1 as timestamp) < 2024-03-10 03:00:00)) OR ((cast(tpep_dropoff_datetime#2 as timestamp) >= 2024-03-10 02:00:00) AND (cast(tpep_dropoff_datetime#2 as timestamp) < 2024-03-10 03:00:00))) THEN false WHEN (CASE WHEN coalesce(((cast(tpep_pickup_datetime#1 as timestamp) < 2024-03-10 02:00:00) AND (cast(tpep_dropoff_datetime#2 as timestamp) >= 2024-03-10 03:00:00)), false) THEN ((unix_timestamp(cast(tpep_dropoff_datetime#2 as timestamp), yyyy-MM-dd HH:mm:ss, Some(UTC), false) - unix_timestamp(cast(tpep_pickup_datetime#1 as timestamp), yyyy-MM-dd HH:mm:ss, Some(UTC), false)) - 3600) ELSE (unix_timestamp(cast(tpep_dropoff_datetime#2 as timestamp), yyyy-MM-dd HH:mm:ss, Some(UTC), false) - unix_timestamp(cast(tpep_pickup_datetime#1 as timestamp), yyyy-MM-dd HH:mm:ss, Some(UTC), false)) END <= 0) THEN false WHEN (CASE WHEN coalesce(((cast(tpep_pickup_datetime#1 as timestamp) < 2024-03-10 02:00:00) AND (cast(tpep_dropoff_datetime#2 as timestamp) >= 2024-03-10 03:00:00)), false) THEN ((unix_timestamp(cast(tpep_dropoff_datetime#2 as timestamp), yyyy-MM-dd HH:mm:ss, Some(UTC), false) - unix_timestamp(cast(tpep_pickup_datetime#1 as timestamp), yyyy-MM-dd HH:mm:ss, Some(UTC), false)) - 3600) ELSE (unix_timestamp(cast(tpep_dropoff_datetime#2 as timestamp), yyyy-MM-dd HH:mm:ss, Some(UTC), false) - unix_timestamp(cast(tpep_pickup_datetime#1 as timestamp), yyyy-MM-dd HH:mm:ss, Some(UTC), false)) END < 60) THEN false WHEN (CASE WHEN coalesce(((cast(tpep_pickup_datetime#1 as timestamp) < 2024-03-10 02:00:00) AND (cast(tpep_dropoff_datetime#2 as timestamp) >= 2024-03-10 03:00:00)), false) THEN ((unix_timestamp(cast(tpep_dropoff_datetime#2 as timestamp), yyyy-MM-dd HH:mm:ss, Some(UTC), false) - unix_timestamp(cast(tpep_pickup_datetime#1 as timestamp), yyyy-MM-dd HH:mm:ss, Some(UTC), false)) - 3600) ELSE (unix_timestamp(cast(tpep_dropoff_datetime#2 as timestamp), yyyy-MM-dd HH:mm:ss, Some(UTC), false) - unix_timestamp(cast(tpep_pickup_datetime#1 as timestamp), yyyy-MM-dd HH:mm:ss, Some(UTC), false)) END > 10800) THEN false ELSE true END
+
+(3) Project [codegen id : 1]
+Output [4]: [cast(tpep_pickup_datetime#1 as timestamp) AS pickup_ts#44, cast(tpep_dropoff_datetime#2 as timestamp) AS dropoff_ts#45, cast(PULocationID#7 as int) AS PULocationID#46, cast(DOLocationID#8 as int) AS DOLocationID#47]
+Input [5]: [tpep_pickup_datetime#1, tpep_dropoff_datetime#2, PULocationID#7, DOLocationID#8, total_amount#16]
+
+(4) Project [codegen id : 1]
+Output [4]: [cast(pickup_ts#44 as date) AS trip_date#88, PULocationID#46, DOLocationID#47, CASE WHEN coalesce(((pickup_ts#44 < 2024-03-10 02:00:00) AND (dropoff_ts#45 >= 2024-03-10 03:00:00)), false) THEN ((unix_timestamp(dropoff_ts#45, yyyy-MM-dd HH:mm:ss, Some(UTC), false) - unix_timestamp(pickup_ts#44, yyyy-MM-dd HH:mm:ss, Some(UTC), false)) - 3600) ELSE (unix_timestamp(dropoff_ts#45, yyyy-MM-dd HH:mm:ss, Some(UTC), false) - unix_timestamp(pickup_ts#44, yyyy-MM-dd HH:mm:ss, Some(UTC), false)) END AS duration_sec#74L]
+Input [4]: [pickup_ts#44, dropoff_ts#45, PULocationID#46, DOLocationID#47]
+
+(5) HashAggregate [codegen id : 1]
+Input [4]: [trip_date#88, PULocationID#46, DOLocationID#47, duration_sec#74L]
+Keys [3]: [trip_date#88, PULocationID#46, DOLocationID#47]
+Functions [2]: [partial_count(1), partial_sum(duration_sec#74L)]
+Aggregate Attributes [2]: [count#293L, sum#294L]
+Results [5]: [trip_date#88, PULocationID#46, DOLocationID#47, count#295L, sum#296L]
+
+(6) Exchange
+Input [5]: [trip_date#88, PULocationID#46, DOLocationID#47, count#295L, sum#296L]
+Arguments: hashpartitioning(trip_date#88, PULocationID#46, DOLocationID#47, 32), ENSURE_REQUIREMENTS, [plan_id=212]
+
+(7) HashAggregate [codegen id : 2]
+Input [5]: [trip_date#88, PULocationID#46, DOLocationID#47, count#295L, sum#296L]
+Keys [3]: [trip_date#88, PULocationID#46, DOLocationID#47]
+Functions [2]: [count(1), sum(duration_sec#74L)]
+Aggregate Attributes [2]: [count(1)#223L, sum(duration_sec#74L)#225L]
+Results [4]: [PULocationID#46, DOLocationID#47, count(1)#223L AS n_trips#224L, sum(duration_sec#74L)#225L AS sum_sec#226L]
+
+(8) Filter [codegen id : 2]
+Input [4]: [PULocationID#46, DOLocationID#47, n_trips#224L, sum_sec#226L]
+Condition : (n_trips#224L >= 30)
+
+(9) Project [codegen id : 2]
+Output [3]: [PULocationID#46, DOLocationID#47, ((cast(sum_sec#226L as double) / cast(n_trips#224L as double)) / 60.0) AS avg_min#232]
+Input [4]: [PULocationID#46, DOLocationID#47, n_trips#224L, sum_sec#226L]
+
+(10) HashAggregate [codegen id : 2]
+Input [3]: [PULocationID#46, DOLocationID#47, avg_min#232]
+Keys [2]: [PULocationID#46, DOLocationID#47]
+Functions [3]: [partial_count(1), partial_avg(avg_min#232), partial_stddev_pop(avg_min#232)]
+Aggregate Attributes [6]: [count#287L, sum#288, count#289L, n#259, avg#260, m2#261]
+Results [8]: [PULocationID#46, DOLocationID#47, count#290L, sum#291, count#292L, n#264, avg#265, m2#266]
+
+(11) Exchange
+Input [8]: [PULocationID#46, DOLocationID#47, count#290L, sum#291, count#292L, n#264, avg#265, m2#266]
+Arguments: hashpartitioning(PULocationID#46, DOLocationID#47, 32), ENSURE_REQUIREMENTS, [plan_id=219]
+
+(12) HashAggregate [codegen id : 3]
+Input [8]: [PULocationID#46, DOLocationID#47, count#290L, sum#291, count#292L, n#264, avg#265, m2#266]
+Keys [2]: [PULocationID#46, DOLocationID#47]
+Functions [3]: [count(1), avg(avg_min#232), stddev_pop(avg_min#232)]
+Aggregate Attributes [3]: [count(1)#245L, avg(avg_min#232)#247, stddev_pop(avg_min#232)#257]
+Results [5]: [PULocationID#46, DOLocationID#47, count(1)#245L AS n_days#246L, avg(avg_min#232)#247 AS mean_daily_min#248, stddev_pop(avg_min#232)#257 AS std_daily_min#258]
+
+(13) Filter [codegen id : 3]
+Input [5]: [PULocationID#46, DOLocationID#47, n_days#246L, mean_daily_min#248, std_daily_min#258]
+Condition : (n_days#246L >= 30)
+
+(14) Project [codegen id : 3]
+Output [6]: [PULocationID#46, DOLocationID#47, n_days#246L, mean_daily_min#248, std_daily_min#258, (std_daily_min#258 / mean_daily_min#248) AS cv#280]
+Input [5]: [PULocationID#46, DOLocationID#47, n_days#246L, mean_daily_min#248, std_daily_min#258]
+

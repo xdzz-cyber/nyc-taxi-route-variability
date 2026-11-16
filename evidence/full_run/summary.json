@@ -1,0 +1,27 @@
+{
+  "label": "full",
+  "input": "/data/csv/yellow_tripdata_2024-*.csv",
+  "partitions": 32,
+  "app_id": "local-1794847024536",
+  "default_parallelism": 16,
+  "timings_s": {
+    "quality": 49.39,
+    "analysis": 31.05,
+    "save_daily": 37.23
+  },
+  "quality": {
+    "total_rows": 20332093,
+    "by_status": {
+      "accepted": 19674794,
+      "dst_gap": 3,
+      "negative_amount": 253897,
+      "non_positive_duration": 881,
+      "out_of_period": 39,
+      "too_long": 12397,
+      "too_short": 181215,
+      "unknown_zone": 208867
+    },
+    "dst_corrected_accepted": 1057
+  },
+  "result_routes": 1303
+}

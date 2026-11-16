@@ -1,0 +1,12 @@
+verify_result.py --input full --label full
+  OK  accepted                 spark=  19,674,794 duckdb=  19,674,794
+  OK  dst_gap                  spark=           3 duckdb=           3
+  OK  negative_amount          spark=     253,897 duckdb=     253,897
+  OK  non_positive_duration    spark=         881 duckdb=         881
+  OK  out_of_period            spark=          39 duckdb=          39
+  OK  too_long                 spark=      12,397 duckdb=      12,397
+  OK  too_short                spark=     181,215 duckdb=     181,215
+  OK  unknown_zone             spark=     208,867 duckdb=     208,867
+Маршрутів: spark=1303, duckdb=1303, лише в spark=0, лише в duckdb=0
+Найбільша відносна різниця mean/std/cv: 1.66e-15 (допуск 1e-09)
+РЕЗУЛЬТАТ ЗБІГАЄТЬСЯ

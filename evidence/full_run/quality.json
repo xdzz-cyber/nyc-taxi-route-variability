@@ -1,0 +1,266 @@
+{
+  "too_short": {
+    "n": 181215,
+    "dst_corrected": 0,
+    "examples": [
+      {
+        "duration_sec": 10,
+        "tpep_pickup_datetime": "2024-04-30 11:32:10.000000",
+        "tpep_dropoff_datetime": "2024-04-30 11:32:20.000000",
+        "PULocationID": "237",
+        "DOLocationID": "237",
+        "trip_distance": "0.02",
+        "total_amount": "74"
+      },
+      {
+        "duration_sec": 19,
+        "tpep_pickup_datetime": "2024-01-15 16:50:01.000000",
+        "tpep_dropoff_datetime": "2024-01-15 16:50:20.000000",
+        "PULocationID": "132",
+        "DOLocationID": "132",
+        "trip_distance": "0",
+        "total_amount": "382.75"
+      },
+      {
+        "duration_sec": 39,
+        "tpep_pickup_datetime": "2024-03-26 23:05:54.000000",
+        "tpep_dropoff_datetime": "2024-03-26 23:06:33.000000",
+        "PULocationID": "170",
+        "DOLocationID": "161",
+        "trip_distance": "0.1",
+        "total_amount": "8"
+      }
+    ]
+  },
+  "out_of_period": {
+    "n": 39,
+    "dst_corrected": 0,
+    "examples": [
+      {
+        "duration_sec": 421,
+        "tpep_pickup_datetime": "2023-12-31 23:41:02.000000",
+        "tpep_dropoff_datetime": "2023-12-31 23:48:03.000000",
+        "PULocationID": "246",
+        "DOLocationID": "246",
+        "trip_distance": "0.4",
+        "total_amount": "12.2"
+      },
+      {
+        "duration_sec": 223,
+        "tpep_pickup_datetime": "2023-12-31 23:56:45.000000",
+        "tpep_dropoff_datetime": "2024-01-01 00:00:28.000000",
+        "PULocationID": "163",
+        "DOLocationID": "237",
+        "trip_distance": "0.97",
+        "total_amount": "13.5"
+      },
+      {
+        "duration_sec": 740,
+        "tpep_pickup_datetime": "2009-01-01 02:39:53.000000",
+        "tpep_dropoff_datetime": "2009-01-01 02:52:13.000000",
+        "PULocationID": "138",
+        "DOLocationID": "129",
+        "trip_distance": "2.98",
+        "total_amount": "25.55"
+      }
+    ]
+  },
+  "too_long": {
+    "n": 12397,
+    "dst_corrected": 57,
+    "examples": [
+      {
+        "duration_sec": 86014,
+        "tpep_pickup_datetime": "2024-01-15 15:52:43.000000",
+        "tpep_dropoff_datetime": "2024-01-16 15:46:17.000000",
+        "PULocationID": "79",
+        "DOLocationID": "262",
+        "trip_distance": "4.98",
+        "total_amount": "32.2"
+      },
+      {
+        "duration_sec": 74999,
+        "tpep_pickup_datetime": "2024-01-24 02:01:19.000000",
+        "tpep_dropoff_datetime": "2024-01-24 22:51:18.000000",
+        "PULocationID": "249",
+        "DOLocationID": "68",
+        "trip_distance": "1.62",
+        "total_amount": "15.7"
+      },
+      {
+        "duration_sec": 84521,
+        "tpep_pickup_datetime": "2024-06-17 12:05:27.000000",
+        "tpep_dropoff_datetime": "2024-06-18 11:34:08.000000",
+        "PULocationID": "100",
+        "DOLocationID": "79",
+        "trip_distance": "2.93",
+        "total_amount": "28.75"
+      }
+    ]
+  },
+  "non_positive_duration": {
+    "n": 881,
+    "dst_corrected": 0,
+    "examples": [
+      {
+        "duration_sec": 0,
+        "tpep_pickup_datetime": "2024-05-24 23:24:48.000000",
+        "tpep_dropoff_datetime": "2024-05-24 23:24:48.000000",
+        "PULocationID": "158",
+        "DOLocationID": "158",
+        "trip_distance": "0",
+        "total_amount": "23.46"
+      },
+      {
+        "duration_sec": 0,
+        "tpep_pickup_datetime": "2024-04-14 01:57:00.000000",
+        "tpep_dropoff_datetime": "2024-04-14 01:57:00.000000",
+        "PULocationID": "234",
+        "DOLocationID": "234",
+        "trip_distance": "0.01",
+        "total_amount": "23.33"
+      },
+      {
+        "duration_sec": 0,
+        "tpep_pickup_datetime": "2024-06-20 17:42:00.000000",
+        "tpep_dropoff_datetime": "2024-06-20 17:42:00.000000",
+        "PULocationID": "233",
+        "DOLocationID": "233",
+        "trip_distance": "0",
+        "total_amount": "23.68"
+      }
+    ]
+  },
+  "accepted": {
+    "n": 19674794,
+    "dst_corrected": 1057,
+    "examples": [
+      {
+        "duration_sec": 1188,
+        "tpep_pickup_datetime": "2024-01-01 00:57:55.000000",
+        "tpep_dropoff_datetime": "2024-01-01 01:17:43.000000",
+        "PULocationID": "186",
+        "DOLocationID": "79",
+        "trip_distance": "1.72",
+        "total_amount": "22.7"
+      },
+      {
+        "duration_sec": 396,
+        "tpep_pickup_datetime": "2024-01-01 00:03:00.000000",
+        "tpep_dropoff_datetime": "2024-01-01 00:09:36.000000",
+        "PULocationID": "140",
+        "DOLocationID": "236",
+        "trip_distance": "1.8",
+        "total_amount": "18.75"
+      },
+      {
+        "duration_sec": 1075,
+        "tpep_pickup_datetime": "2024-01-01 00:17:06.000000",
+        "tpep_dropoff_datetime": "2024-01-01 00:35:01.000000",
+        "PULocationID": "236",
+        "DOLocationID": "79",
+        "trip_distance": "4.7",
+        "total_amount": "31.3"
+      }
+    ]
+  },
+  "unknown_zone": {
+    "n": 208867,
+    "dst_corrected": 24,
+    "examples": [
+      {
+        "duration_sec": 1154,
+        "tpep_pickup_datetime": "2024-04-05 00:27:10.000000",
+        "tpep_dropoff_datetime": "2024-04-05 00:46:24.000000",
+        "PULocationID": "230",
+        "DOLocationID": "264",
+        "trip_distance": "1.72",
+        "total_amount": "15.7"
+      },
+      {
+        "duration_sec": 20,
+        "tpep_pickup_datetime": "2024-01-01 21:42:24.000000",
+        "tpep_dropoff_datetime": "2024-01-01 21:42:44.000000",
+        "PULocationID": "265",
+        "DOLocationID": "265",
+        "trip_distance": "0",
+        "total_amount": "200"
+      },
+      {
+        "duration_sec": 788,
+        "tpep_pickup_datetime": "2024-03-24 12:52:12.000000",
+        "tpep_dropoff_datetime": "2024-03-24 13:05:20.000000",
+        "PULocationID": "264",
+        "DOLocationID": "264",
+        "trip_distance": "1.8",
+        "total_amount": "16.8"
+      }
+    ]
+  },
+  "negative_amount": {
+    "n": 253897,
+    "dst_corrected": 15,
+    "examples": [
+      {
+        "duration_sec": 875,
+        "tpep_pickup_datetime": "2024-05-14 07:58:52.000000",
+        "tpep_dropoff_datetime": "2024-05-14 08:13:27.000000",
+        "PULocationID": "7",
+        "DOLocationID": "138",
+        "trip_distance": "4.41",
+        "total_amount": "-28.4"
+      },
+      {
+        "duration_sec": 883,
+        "tpep_pickup_datetime": "2024-04-03 00:11:56.000000",
+        "tpep_dropoff_datetime": "2024-04-03 00:26:39.000000",
+        "PULocationID": "145",
+        "DOLocationID": "93",
+        "trip_distance": "8.64",
+        "total_amount": "-26.95"
+      },
+      {
+        "duration_sec": 940,
+        "tpep_pickup_datetime": "2024-03-09 11:27:23.000000",
+        "tpep_dropoff_datetime": "2024-03-09 11:43:03.000000",
+        "PULocationID": "93",
+        "DOLocationID": "170",
+        "trip_distance": "8.7",
+        "total_amount": "-38.5"
+      }
+    ]
+  },
+  "dst_gap": {
+    "n": 3,
+    "dst_corrected": 0,
+    "examples": [
+      {
+        "duration_sec": 85132,
+        "tpep_pickup_datetime": "2024-03-09 02:31:02.000000",
+        "tpep_dropoff_datetime": "2024-03-10 02:09:54.000000",
+        "PULocationID": "114",
+        "DOLocationID": "48",
+        "trip_distance": "3.36",
+        "total_amount": "27.72"
+      },
+      {
+        "duration_sec": 86320,
+        "tpep_pickup_datetime": "2024-03-09 02:24:19.000000",
+        "tpep_dropoff_datetime": "2024-03-10 02:22:59.000000",
+        "PULocationID": "79",
+        "DOLocationID": "230",
+        "trip_distance": "3.34",
+        "total_amount": "22"
+      },
+      {
+        "duration_sec": 85057,
+        "tpep_pickup_datetime": "2024-03-09 03:13:26.000000",
+        "tpep_dropoff_datetime": "2024-03-10 02:51:03.000000",
+        "PULocationID": "114",
+        "DOLocationID": "170",
+        "trip_distance": "1.91",
+        "total_amount": "16.4"
+      }
+    ]
+  }
+}
