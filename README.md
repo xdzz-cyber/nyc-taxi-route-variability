@@ -4,10 +4,12 @@
 (20 332 093 записи, 2,19 ГБ CSV). Конвеєр з двома shuffle: підсумок за (дата, маршрут) →
 відбір днів із ≥ 30 поїздками → мінливість денних середніх за маршрутом (mean, std_pop, CV).
 
+* **Звіт:** [`docs/report.pdf`](docs/report.pdf) · **слайди:** [`docs/slides.pdf`](docs/slides.pdf) ([`.pptx`](docs/slides.pptx))
 * Алгоритм, ключі, правила очищення: [`docs/algorithm.md`](docs/algorithm.md)
 * Оцінки до запуску: [`docs/estimates.md`](docs/estimates.md)
 * Оцінка проти факту, карта фаз: `docs/phase_map_full.md`
-* Перекіс: `docs/skew_full.md`; експеримент: `docs/experiment.md`
+* Перекіс: `docs/skew_full.md`; експеримент: план [`docs/experiment_plan.md`](docs/experiment_plan.md) (до замірів) і результат [`docs/experiment.md`](docs/experiment.md)
+* Докази повного запуску й експерименту: `evidence/` (журнали подій для History Server, `verify.txt`, `runs.csv`)
 
 ## Вимоги
 
