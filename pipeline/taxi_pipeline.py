@@ -181,8 +181,9 @@ def main():
     ap.add_argument("--no-quality", action="store_true", help="не рахувати звіт якості")
     ap.add_argument("--save-daily", action="store_true",
                     help="додатково записати вихід етапу 1 (для аналізу перекосу)")
-    ap.add_argument("--hold-ui", action="store_true",
-                    help="не закривати Spark UI (localhost:4040) до натискання Enter")
+    ap.add_argument("--hold-ui", type=int, nargs="?", const=120, default=0, metavar="SEC",
+                    help="тримати Spark UI (localhost:4040) відкритим SEC секунд (за замовчуванням 120); "
+                         "spark-submit не передає клавіатуру в Python, тому чекаємо за таймером")
     args = ap.parse_args()
 
     in_path = C.resolve_input(args.input)
@@ -258,7 +259,14 @@ def main():
     print(json.dumps(summary, ensure_ascii=False, indent=2))
 
     if args.hold_ui:
-        input("Spark UI: http://localhost:4040 . Натисніть Enter, щоб завершити...")
+        left = args.hold_ui
+        print(f"\nSpark UI відкритий: http://localhost:4040 — ще {left} с, потім Spark завершиться сам.", flush=True)
+        while left > 0:
+            step = min(30, left)
+            time.sleep(step)
+            left -= step
+            if left > 0:
+                print(f"  Spark UI буде доступний ще {left} с", flush=True)
     spark.stop()
 
 

@@ -3,7 +3,7 @@
 
     docker compose run --rm pipeline                         # вибірка, 32 розділи
     docker compose run --rm pipeline --input full --save-daily --label full
-    docker compose run --rm --service-ports pipeline --hold-ui   # Spark UI на localhost:4040
+    docker compose run --rm --service-ports pipeline --hold-ui   # Spark UI на localhost:4040 протягом 120 с
 
 Усі аргументи передаються в pipeline/taxi_pipeline.py (див. --help).
 """

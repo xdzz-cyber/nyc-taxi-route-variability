@@ -36,7 +36,7 @@ docker compose run --rm tools scripts/verify_result.py --input sample --label sa
 ```
 
 Spark UI під час запуску: `docker compose run --rm --service-ports pipeline --hold-ui`,
-потім http://localhost:4040. Журнали всіх запусків: `docker compose up -d history`,
+потім http://localhost:4040 (UI відкритий 120 с після завершення аналізу; інший час: `--hold-ui 300`). Журнали всіх запусків: `docker compose up -d history`,
 http://localhost:18080.
 
 ## Повний набір
